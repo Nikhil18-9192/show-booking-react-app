@@ -1,0 +1,54 @@
+.App{
+  position: relative;
+  width: 100%;
+  background: #fff;
+  
+}
+// App css for dark mode 
+.App_dark{
+  position: relative;
+  width: 100%;
+  background: black;
+}
+
+// root css
+:root{
+  --text-color: #000;
+}
+
+$primary: #72aaea;
+$bg-white: #fff ;
+
+.theme_btn{
+    background-color: $primary;
+    color: $bg-white;
+    padding: 10px 28px;
+    border-radius: 4px;
+    border: 1px solid black;
+    font-size: 18px;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: 0.4s ease all;
+    margin: 0 6px;
+}
+
+.head_text{
+  font-size: 36px;
+  letter-spacing: 1px;
+  text-align: center;
+  margin-bottom: 18px;
+  color: var(--text-color);
+}
+
+.sub_head_text{
+  font-size: 24px;
+  letter-spacing: 1px;
+  text-align: center;
+  margin-bottom: 18px;
+  color: var(--text-color);
+}
+
+// antd button theme color
+.ant-btn-primary{
+  background-color: $primary;
+}

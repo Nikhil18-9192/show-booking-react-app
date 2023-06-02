@@ -1,0 +1,86 @@
+@import '../../App.scss';
+.selected_show_container{
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .container_item{
+        position: relative;
+        width: 60%;
+
+        .bottom_btn_container{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding-top: 100px;
+            padding-bottom: 50px;
+            
+        }
+
+        .disable{
+            background: red;
+        }
+
+        .show_list{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 45px;
+            .title{
+                font-size: 36px;
+                letter-spacing: 1px;
+                text-align: center;
+                color: var(--text-color);
+            }
+            
+        }
+        .seating_container{
+            margin-top: 85px;
+            width: 50%;
+            margin: 0 auto;
+            
+            .audi_container{
+                width: 100%;
+                padding-top: 40px;
+                .audi{
+                    
+                    .seat_info{
+                        padding: 8px 0;
+                        border-bottom: 1px solid #ccc;
+                        .info_text{
+                            color: #a9a9a9;
+                            font-size: 14px;
+                            font-weight: 500;
+                        }
+                    }
+                    .seat_container{
+                        display: flex;
+                        margin: 10px auto;
+                        .seat_icon{
+                            color: $primary;
+                            font-size: 38px;
+                            margin: 0 8px;
+                            cursor: pointer;
+                        }
+                        .selected_icon{
+                            color: orange;
+                        }
+                        .booked_icon{
+                            color: #ccc;
+                            opacity: 0.5;
+                            pointer-events: none;
+                        }
+                        .disappear{
+                            visibility: hidden;
+                        }
+                    }
+                    
+                    
+                }
+            }
+        }
+
+    }
+}
