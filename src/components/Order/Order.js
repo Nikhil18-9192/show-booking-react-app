@@ -4,6 +4,7 @@ import "./Order.scss";
 import GlobaleContext from "../Context/Createcontext";
 import Modetoggle from "../ModeToggle/ModeToggle";
 import { Modal } from "antd";
+import Button from "../Button/Button";
 
 function Order() {
   const navigate = useNavigate();
@@ -60,7 +61,7 @@ function Order() {
           <p className="text">
             Booked Seats:{" "}
             {booking.map((item, i) => (
-              <span className="bold_text">
+              <span className="bold_text" key={i}>
                 {item.name}
                 {i < booking.length - 1 ? ", " : ""}
               </span>
@@ -86,13 +87,8 @@ function Order() {
           </p>
         </div>
         <div className="bottom_btn_container">
-          <button className="theme_btn" onClick={() => window.history.back()}>
-            Go Back
-          </button>
-
-          <button className="theme_btn" onClick={() => bookedShow()}>
-            Pay and Book Now
-          </button>
+          <Button text="Go Back" onClick={() => window.history.back()} />
+          <Button text="Pay and Book Now" onClick={bookedShow} />
         </div>
         <Modetoggle />
       </div>

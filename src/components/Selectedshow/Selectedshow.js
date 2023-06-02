@@ -1,55 +1,23 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./Selectedshow.scss";
 import { Link, useParams, useNavigate } from "react-router-dom";
 import GlobaleContext from "../Context/Createcontext";
 import Modetoggle from "../ModeToggle/ModeToggle";
 import { Alert } from "antd";
-import { MdEventSeat } from "react-icons/md";
+import Audi from "../Audi/Audi";
+import Button from "../Button/Button"
 
 function Selectedshow() {
   const navigate = useNavigate();
   const [showAlert, setShowAlert] = useState(false);
-  const { state, dispatch } = useContext(GlobaleContext);
-  //   const [select, setSelect] = useState(false);
+  const { state} = useContext(GlobaleContext);
   const shows = state.shows;
-  const [selected, setSelected] = useState(state.booking);
-  const bookedSeats = state.bookedSeat;
+  const [selected, setSelected] = useState([]);
   const { show } = useParams();
   const [showId, setShowId] = useState(show);
   const showInfo = state.shows.filter(
     (item) => item.id === parseInt(showId)
   )[0];
-
-  // select seat function to handle select and deselect click on seat
-  const handleSelectClick = (item) => {
-    if (selected.includes(item)) {
-      // if seat is already selected
-      // spread the selected seats array and assign it to arr
-      const arr = [...selected];
-      // filter arr with check selected seat is available in array if available filter it and return filtered array
-      const filterArr = arr.filter((seat) => seat.name !== item.name);
-      // filtered array set to the selected state
-      setSelected(filterArr);
-      // update context state booking with filtered array
-      dispatch({
-        type: "booking",
-        payload: filterArr,
-      });
-    } else {
-      // if seat is not selected
-      // copy selected seats array into the arr
-      const arr = [...selected];
-      // push selected seat object into the arr
-      arr.push(item);
-      // update selected array
-      setSelected(arr);
-      // update context state booking with array
-      dispatch({
-        type: "booking",
-        payload: arr,
-      });
-    }
-  };
 
   // proceed next function
   const proceedNext = () => {
@@ -64,6 +32,11 @@ function Selectedshow() {
     setSelected([]);
     setShowId(show.id);
   };
+
+  useEffect(() => {
+    const selectedSeats = state.booking
+    setSelected(selectedSeats) 
+  },[state.booking])
 
   return (
     <div className="selected_show_container">
@@ -86,59 +59,21 @@ function Selectedshow() {
           />
         )}
         <Link to="/">
-          <button className="theme_btn">Go back</button>
+        <Button text="Go Back" />
         </Link>
         <div className="show_list">
           <h2 className="title">Select Show :</h2>
           {/* display shows */}
           {shows.map((show, i) => (
-            <button
-              key={i}
-              onClick={() => selectShow(show)}
-              className="theme_btn"
-            >
-              {show.name}
-            </button>
+           
+            <Button text={show.name} key={i}
+            onClick={() => selectShow(show)} />
           ))}
         </div>
-        <div className="seating_container">
-          <div className="audi_container">
-            <h2 className="head_text">{showInfo.name}</h2>
-            <h3 className="sub_head_text">
-              Select Seat and Proceed for Payment
-            </h3>
-            {
-            
-              showInfo.seatingArrangement.map((item, index)=>( <div className="audi">
-              <div className="seat_info">
-                <p className="info_text">{`${item.category}: ${item.price} RS`}</p>
-              </div>
-              <div className="seat_container">
-                {item.row.map((item, i) => (
-                  <MdEventSeat
-                  key={i}
-                  className={`seat_icon ${
-                    selected.includes(item)
-                      ? "selected_icon"
-                      : bookedSeats.includes(item)
-                      ? "booked_icon"
-                      : ""
-                  } ${item.class}`}
-                  onClick={() => handleSelectClick(item)}
-                />
-                ))}
-              </div>
-            </div>))}
-          </div>
-        </div>
+        <Audi showInfo={showInfo} />
         <div className="bottom_btn_container">
-          <button className="theme_btn" onClick={() => navigate("/")}>
-            Other Shows
-          </button>
-
-          <button className="theme_btn" onClick={() => proceedNext()}>
-            Proceed Next
-          </button>
+          <Button text="Other Shows" onClick={() => navigate("/")} />
+          <Button text="Proceed Next" onClick={proceedNext} />   
         </div>
         <Modetoggle />
       </div>

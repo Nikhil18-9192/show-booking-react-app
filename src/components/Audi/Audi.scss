@@ -1,0 +1,46 @@
+@import '../../App.scss';
+.seating_container{
+    margin-top: 85px;
+    width: 50%;
+    margin: 0 auto;
+    
+    .audi_container{
+        width: 100%;
+        padding-top: 40px;
+        .audi{
+            
+            .seat_info{
+                padding: 8px 0;
+                border-bottom: 1px solid #ccc;
+                .info_text{
+                    color: #a9a9a9;
+                    font-size: 14px;
+                    font-weight: 500;
+                }
+            }
+            .seat_container{
+                display: flex;
+                margin: 10px auto;
+                .seat_icon{
+                    color: $primary;
+                    font-size: 38px;
+                    margin: 0 8px;
+                    cursor: pointer;
+                }
+                .selected_icon{
+                    color: orange;
+                }
+                .booked_icon{
+                    color: #ccc;
+                    opacity: 0.5;
+                    pointer-events: none;
+                }
+                .disappear{
+                    visibility: hidden;
+                }
+            }
+            
+            
+        }
+    }
+}
