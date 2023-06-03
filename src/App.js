@@ -7,6 +7,7 @@ import GlobaleContext from "./components/Context/Createcontext";
 import Selectedshow from "./components/Selectedshow/Selectedshow";
 import Order from "./components/Order/Order";
 import Revenue from "./components/Revenue/Revenue";
+import Register from "./components/Register/Register";
 
 function App() {
   // use context for get data from context state
@@ -19,6 +20,7 @@ function App() {
   return (
     <div className={appClass} style={{ "--text-color": textColor }}>
       <Routes>
+        <Route exact path="/register" element={<Register />} />
         <Route exact path="/" element={<Home />} />
         <Route exact path="/selected-show/:show" element={<Selectedshow />} />
         <Route path="/order" element={<Order />} />
