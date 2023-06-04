@@ -31,6 +31,9 @@ $bg-white: #fff ;
     transition: 0.4s ease all;
     margin: 0 6px;
 }
+.ant-form-item .ant-form-item-label >label{
+  color: var(--text-color);
+}
 
 .head_text{
   font-size: 36px;

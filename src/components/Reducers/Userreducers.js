@@ -1,6 +1,6 @@
 const initialState = {
   user: null,
-  token: null,
+  loginUser: null,
 };
 
 const Userreducer = (state = initialState, action) => {
@@ -13,13 +13,13 @@ const Userreducer = (state = initialState, action) => {
     case "LOGIN_USER":
       return {
         ...state,
-        token: action.payload,
+        loginUser: action.payload,
       };
     case "LOGOUT_USER":
       return {
         ...state,
         user: null,
-        token: null,
+        loginUser: null,
       };
     default:
       return state;
