@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./Login.scss";
 import { Form, Input, Button, Alert } from "antd";
 import { useDispatch , useSelector} from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Modetoggle from "../ModeToggle/ModeToggle";
 
 function Login() {
@@ -65,7 +65,7 @@ function Login() {
           </Button>
         </Form.Item>
       </Form>
-      <p className="link_text">Don't have an account? <a href="/register">Register</a></p>
+      <p className="link_text">Don't have an account? <Link to="/register">Register</Link></p>
       <Modetoggle />
       </div>
     </div>
